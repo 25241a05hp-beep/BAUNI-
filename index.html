@@ -1,51 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine</title>
-  <style>
-    body {
-      text-align: center;
-      font-family: Arial, sans-serif;
-      background-color: #ffe6e6;
-      margin-top: 100px;
-    }
+<meta charset="UTF-8">
+<title>Valentine for Tanvi</title>
 
-    h1 {
-      font-size: 40px;
-    }
+<style>
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #ffe6e6;
+  margin-top: 100px;
+}
 
-    button {
-      font-size: 20px;
-      padding: 10px 20px;
-      margin: 10px;
-      cursor: pointer;
-      position: relative;
-    }
-  </style>
+h1 {
+  font-size: 40px;
+}
+
+#yesBtn {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#noBtn {
+  font-size: 20px;
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+</style>
+
 </head>
 <body>
 
-  <h1>Tanvi, will you be my Valentine? ❤️</h1>
+<h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
 
-  <button onclick="yesClicked()">Yes</button>
-  <button onmouseover="moveNoButton()" id="noBtn">No</button>
+<button id="yesBtn" onclick="yesClicked()">Yes</button>
+<button id="noBtn" onclick="noClicked()">No</button>
 
-  <script>
-    function yesClicked() {
-      alert("Yay!!! ❤️");
-    }
+<script>
 
-    function moveNoButton() {
-      var button = document.getElementById("noBtn");
-      var x = Math.random() * window.innerWidth * 0.6;
-      var y = Math.random() * window.innerHeight * 0.6;
+let noCount = 0;
 
-      button.style.position = "absolute";
-      button.style.left = x + "px";
-      button.style.top = y + "px";
-    }
-  </script>
+let questions = [
+  "Are you sure Tanvi? 🥺",
+  "Really sure? 💔",
+  "Please Tanvi? ❤️",
+  "Don't do this to me 😢",
+  "You're breaking my heart 💔",
+  "Last chance Tanvi 😭",
+  "Say Yes please ❤️"
+];
+
+function noClicked() {
+  let question = document.getElementById("question");
+  let yesBtn = document.getElementById("yesBtn");
+
+  if (noCount < questions.length) {
+    question.innerHTML = questions[noCount];
+    noCount++;
+  }
+
+  let currentSize = window.getComputedStyle(yesBtn).fontSize;
+  let newSize = parseFloat(currentSize) + 10;
+
+  yesBtn.style.fontSize = newSize + "px";
+  yesBtn.style.padding = newSize/2 + "px " + newSize + "px";
+}
+
+function yesClicked() {
+  document.body.innerHTML = `
+    <h1>Yayyyy Tanvi!!! ❤️</h1>
+    <h2>You made me the happiest person 😍</h2>
+    <h2>I love you ❤️</h2>
+  `;
+}
+
+</script>
 
 </body>
 </html>
