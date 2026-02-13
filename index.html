@@ -2,85 +2,123 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Valentine for Tanvi</title>
+<title>Valentine for Tanvi ❤️</title>
 
 <style>
 body {
-  text-align: center;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e6cccc;
   font-family: Arial, sans-serif;
-  background-color: #ffe6e6;
-  margin-top: 100px;
+}
+
+.container {
+  text-align: center;
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 28px;
+  margin-bottom: 20px;
 }
 
 #yesBtn {
-  font-size: 20px;
-  padding: 10px 20px;
-  margin: 10px;
   background-color: #4CAF50;
   color: white;
   border: none;
   cursor: pointer;
+  font-size: 20px;
+  padding: 15px 30px;
+  margin: 10px;
+  transition: all 0.3s ease;
 }
 
 #noBtn {
-  font-size: 20px;
-  padding: 10px 20px;
-  margin: 10px;
   background-color: #f44336;
   color: white;
   border: none;
   cursor: pointer;
+  font-size: 16px;
+  padding: 8px 15px;
+  margin: 10px;
 }
 </style>
 
 </head>
 <body>
 
-<h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
+<div class="container">
 
-<button id="yesBtn" onclick="yesClicked()">Yes</button>
-<button id="noBtn" onclick="noClicked()">No</button>
+  <h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
+
+  <button id="yesBtn" onclick="yesClicked()">Yes</button>
+  <button id="noBtn" onclick="noClicked()">No</button>
+
+</div>
 
 <script>
 
 let noCount = 0;
+let scale = 1;
 
 let questions = [
   "Are you sure Tanvi? 🥺",
   "Really sure? 💔",
-  "Please Tanvi? ❤️",
-  "Don't do this to me 😢",
-  "You're breaking my heart 💔",
+  "Please Tanvi ❤️",
+  "Think again 😢",
+  "Don't break my heart 💔",
   "Last chance Tanvi 😭",
   "Say Yes please ❤️"
 ];
 
 function noClicked() {
-  let question = document.getElementById("question");
-  let yesBtn = document.getElementById("yesBtn");
 
   if (noCount < questions.length) {
-    question.innerHTML = questions[noCount];
-    noCount++;
+    document.getElementById("question").innerHTML = questions[noCount];
   }
 
-  let currentSize = window.getComputedStyle(yesBtn).fontSize;
-  let newSize = parseFloat(currentSize) + 10;
+  noCount++;
 
-  yesBtn.style.fontSize = newSize + "px";
-  yesBtn.style.padding = newSize/2 + "px " + newSize + "px";
+  scale += 0.5;
+
+  let yesBtn = document.getElementById("yesBtn");
+
+  yesBtn.style.transform = "scale(" + scale + ")";
+
+  if (scale > 3) {
+    yesBtn.style.position = "fixed";
+    yesBtn.style.top = "50%";
+    yesBtn.style.left = "50%";
+    yesBtn.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+    yesBtn.style.width = "100vw";
+    yesBtn.style.height = "100vh";
+    yesBtn.style.fontSize = "60px";
+    yesBtn.style.zIndex = "1000";
+  }
+
 }
 
 function yesClicked() {
+
   document.body.innerHTML = `
-    <h1>Yayyyy Tanvi!!! ❤️</h1>
-    <h2>You made me the happiest person 😍</h2>
-    <h2>I love you ❤️</h2>
+    <div style="
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      flex-direction:column;
+      font-family:Arial;
+      background-color:#e6cccc;
+      text-align:center;
+    ">
+      <h1>Yay Tanvi!!! ❤️</h1>
+      <h2>You made me the happiest person 😍</h2>
+      <h2>I love you ❤️</h2>
+    </div>
   `;
+
 }
 
 </script>
