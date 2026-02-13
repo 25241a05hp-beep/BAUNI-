@@ -5,9 +5,14 @@
 <title>Valentine for Tanvi ❤️</title>
 
 <style>
-body {
+
+html, body {
   margin: 0;
-  height: 100vh;
+  padding: 0;
+  height: 100%;
+}
+
+body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,8 +25,8 @@ body {
 }
 
 h1 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 26px;
+  margin: 0 0 15px 0;
 }
 
 #yesBtn {
@@ -29,9 +34,9 @@ h1 {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 20px;
-  padding: 15px 30px;
-  margin: 10px;
+  font-size: 18px;
+  padding: 12px 25px;
+  margin: 5px;
   transition: all 0.3s ease;
 }
 
@@ -40,21 +45,22 @@ h1 {
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
-  padding: 8px 15px;
-  margin: 10px;
+  font-size: 14px;
+  padding: 6px 12px;
+  margin: 5px;
 }
-</style>
 
+</style>
 </head>
+
 <body>
 
 <div class="container">
 
-  <h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
+<h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
 
-  <button id="yesBtn" onclick="yesClicked()">Yes</button>
-  <button id="noBtn" onclick="noClicked()">No</button>
+<button id="yesBtn" onclick="yesClicked()">Yes</button>
+<button id="noBtn" onclick="noClicked()">No</button>
 
 </div>
 
@@ -80,7 +86,6 @@ function noClicked() {
   }
 
   noCount++;
-
   scale += 0.5;
 
   let yesBtn = document.getElementById("yesBtn");
@@ -94,8 +99,7 @@ function noClicked() {
     yesBtn.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
     yesBtn.style.width = "100vw";
     yesBtn.style.height = "100vh";
-    yesBtn.style.fontSize = "60px";
-    yesBtn.style.zIndex = "1000";
+    yesBtn.style.fontSize = "50px";
   }
 
 }
@@ -103,20 +107,18 @@ function noClicked() {
 function yesClicked() {
 
   document.body.innerHTML = `
-    <div style="
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      height:100vh;
-      flex-direction:column;
-      font-family:Arial;
-      background-color:#e6cccc;
-      text-align:center;
-    ">
-      <h1>Yay Tanvi!!! ❤️</h1>
-      <h2>You made me the happiest person 😍</h2>
-      <h2>I love you ❤️</h2>
-    </div>
+  <div style="
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    text-align:center;
+    background-color:#e6cccc;
+    flex-direction:column;
+  ">
+    <h1>Yay Tanvi!!! ❤️</h1>
+    <h2>You made me the happiest person 😍</h2>
+  </div>
   `;
 
 }
