@@ -10,23 +10,32 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: Arial, sans-serif;
+  background-color: #e6cccc;
 }
 
-body {
+/* Instruction screen */
+#startScreen {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #e6cccc;
-  font-family: Arial, sans-serif;
+  height: 100vh;
+  text-align: center;
+  flex-direction: column;
 }
 
-.container {
+/* Main content */
+#mainContent {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   text-align: center;
+  flex-direction: column;
 }
 
 h1 {
   font-size: 26px;
-  margin: 0 0 15px 0;
 }
 
 #yesBtn {
@@ -52,19 +61,41 @@ h1 {
 
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<!-- Instruction Screen -->
+<div id="startScreen">
+  <h1>📱 Tilt your phone to start ❤️</h1>
+  <p>(Rotate your phone left or right)</p>
+</div>
 
-<h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
+<!-- Main Valentine Content -->
+<div id="mainContent">
 
-<button id="yesBtn" onclick="yesClicked()">Yes</button>
-<button id="noBtn" onclick="noClicked()">No</button>
+  <h1 id="question">Tanvi, will you be my Valentine? ❤️</h1>
+
+  <div>
+    <button id="yesBtn" onclick="yesClicked()">Yes</button>
+    <button id="noBtn" onclick="noClicked()">No</button>
+  </div>
 
 </div>
 
 <script>
+
+let started = false;
+
+// Detect phone tilt
+window.addEventListener("deviceorientation", function(event) {
+
+  if (!started && Math.abs(event.gamma) > 20) {
+    started = true;
+
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "flex";
+  }
+
+});
 
 let noCount = 0;
 let scale = 1;
@@ -112,9 +143,8 @@ function yesClicked() {
     justify-content:center;
     align-items:center;
     height:100vh;
-    text-align:center;
-    background-color:#e6cccc;
     flex-direction:column;
+    background-color:#e6cccc;
   ">
     <h1>Yay Tanvi!!! ❤️</h1>
     <h2>You made me the happiest person 😍</h2>
