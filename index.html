@@ -11,13 +11,36 @@
         <div class="gif_container">
             <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Cute GIF">
         </div>
-        <h1>Will you be my Valentine?</h1>
-        <div class="buttons">
-            <button class="yes-button" onclick="handleYesClick()">Yes</button>
-            <button class="no-button" onclick="handleNoClick()">No</button>
-        </div>
-        
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+        <h1 class="valentine-text">
+  Tanvi, will you be my <span class="highlight">Valentine?</span> ❤️
+</h1>
+
+<style>
+.valentine-text {
+  font-size: 40px;
+  font-family: 'Comic Sans MS', cursive;
+  text-align: center;
+  animation: float 2s ease-in-out infinite;
+}
+
+.highlight {
+  color: #ff4d6d;
+  text-shadow: 0 0 10px #ff758f, 0 0 20px #ff758f;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ff758f;
+  }
+  to {
+    text-shadow: 0 0 20px #ff4d6d, 0 0 30px #ff4d6d;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+</style>
